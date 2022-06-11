@@ -7,15 +7,29 @@ import {
   incrementAsync,
   selectCount,
 } from './counterSlice';
+
+import { addCart, removeCart, selectResults } from './testSlice';
 import styles from './Counter.module.css';
 
 export function Counter() {
   const count = useSelector(selectCount);
   const dispatch = useDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
+  const results = useSelector(selectResults);
 
   return (
     <div>
+
+    {
+      results.map(item => 
+        <div key={item}>
+          {item}  
+        </div> 
+      )
+
+      
+    }
+    <button onClick={()=> {dispatch(addCart(Number(incrementAmount)))}}> Add Cart </button>
       <div className={styles.row}>
         <button
           className={styles.button}

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-
+import { addCart } from './testSlice'
 export const counterSlice = createSlice({
   name: 'counter',
   initialState: {
@@ -31,6 +31,7 @@ export const { increment, decrement, incrementByAmount } = counterSlice.actions
 export const incrementAsync = (amount) => (dispatch) => {
   setTimeout(() => {
     dispatch(incrementByAmount(amount))
+    dispatch(addCart(Number(amount)))
   }, 1000)
 }
 
